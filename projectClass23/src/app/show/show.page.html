@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="purple">
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title>แสดงรายการทั้งหมด</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-refresher slot="fixed" (ionRefresh)="loadDataMem()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item *ngFor="let mb of member">
+    <ion-avatar slot="start">
+      <img src="../../assets/01.jpg">
+    </ion-avatar>
+    <ion-label>{{ mb.id_stu }} {{ mb.name }} {{ mb.nname }}</ion-label>
+    <ion-button color="warning" (click)="edit(mb)">แก้ไข</ion-button>
+    <ion-button color="danger" (click)="delMem(mb.id)">ลบ</ion-button>
+  </ion-item>
+</ion-content>
